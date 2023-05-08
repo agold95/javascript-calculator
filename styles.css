@@ -7,8 +7,15 @@
 
 .calculator {
     border: solid 3px black;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 10px;
+}
+
+.display {
+    border: solid 3px black;
+    border-radius: 5px;
+    padding: 55px 10px;
+    margin-bottom: 10px;
 }
 
 button {
