@@ -31,3 +31,10 @@ function operate(a, operator, b) {
           return null
       }
 }
+
+function operatorConversion(operator) {
+    if (operator === '/') return '÷'
+    if (operator === '*') return 'x'
+    if (operator === '-') return '-'
+    if (operator === '+') return '+'
+  }
