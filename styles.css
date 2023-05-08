@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 750px;
+}
+
+.calculator {
+    border: solid 3px black;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+button {
+    text-align: center;
+    padding: 20px 30px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.first-row {
+    grid-column: span 2;
+  }
