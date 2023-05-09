@@ -1,13 +1,42 @@
+// queries all numbered buttons and links to functionality
 const numberButtons = document.querySelectorAll('[data-number]');
+numberButtons.forEach((button) => 
+    button.addEventListener('click', () => appendNum(button.textContent))
+);
+
+// queries all operator buttons and links to functionality
 const operatorButtons = document.querySelectorAll('[data-operator]');
+operatorButtons.forEach((button) => 
+    button.addEventListener('click', () => startOperation(button.textContent))
+);
+
+// queries decimal button and links functionality
+const decimalButton = document.getElementById('decimal-button');
+decimalButton.addEventListener('click', addDecimal);
+
+// queries clear button and links functionality
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', clear);
+
+// queries delete button and links functionality
+const deleteButton = document.getElementById('delete-button');
+deleteButton.addEventListener('click', deleteNum);
+
+// queries equals button and links functionality
+const equalsButton = document.getElementById('equals-button');
+equalsButton.addEventListener('click', evaluate);
+
+// queries current and last displays
 const lastOperation = document.getElementById('last-display');
 const currentOperation = document.getElementById('current-display');
 
+// instantiates the three parts of an operation
 let operationType = null;
 let a = '';
 let b = '';
 let shouldDisplayClear = false;
 
+// all mathematical functions
 function add(a, b) {
     return (a + b);
 }
@@ -24,6 +53,7 @@ function multiply(a, b) {
     return (a * b);
 }
 
+// operation function which returns result
 function operate(a, operator, b) {
     a = Number(a);
     b = Number(b);
@@ -42,6 +72,7 @@ function operate(a, operator, b) {
       }
 }
 
+// converts button design into functional buttons
 function operatorConversion(operator) {
     if (operator === '/') return '÷';
     if (operator === '*') return 'x';
@@ -49,15 +80,18 @@ function operatorConversion(operator) {
     if (operator === '+') return '+';
   }
 
+// rounds decimals
 function round(num) {
     return Math.round(num * 1000) / 1000;
 }
 
+// resets display
 function resetDisplay() {
     currentOperation.textContent = '';
     shouldDisplayClear = false;
 }
 
+// appends numbers to display screen
 function appendNum(num) {
     if (currentOperation.textContent === '0' || shouldDisplayClear) {
         resetDisplay();
@@ -65,14 +99,7 @@ function appendNum(num) {
         currentOperation.textContent += num;
 }
 
-numberButtons.forEach((button) => 
-    button.addEventListener('click', () => appendNum(button.textContent))
-)
-
-operatorButtons.forEach((button) => 
-    button.addEventListener('click', () => startOperation(button.textContent))
-)
-
+// evaluates mathematical functions and displays result
 function evaluate() {
     if (operationType === null || shouldDisplayClear) {
         return;
@@ -83,9 +110,11 @@ function evaluate() {
     }
     b = currentOperation.textContent;
     currentOperation.textContent = round(operate(a, operationType, b));
-    lastOperation.textContent = a + operationType + b;
+    lastOperation.textContent = a + operationType + b + '=';
+    operationType = null;
 }
 
+// starts operation and displays first operator and the operation type
 function startOperation(operator) {
     if (operationType !== null) {
         evaluate();
@@ -96,6 +125,7 @@ function startOperation(operator) {
     shouldDisplayClear = true;
 }
 
+// clears display
 function clear() {
     currentOperation.textContent = '0';
     lastOperation.textContent = '';
@@ -104,6 +134,24 @@ function clear() {
     operationType = null;
 }
 
+// deletes single number from display
 function deleteNum() {
     currentOperation.textContent = currentOperation.textContent.toString().slice(0, -1);
+    if (currentOperation.textContent === '') {
+        currentOperation.textContent = '0';
+    }
+}
+
+// adds decimal to display
+function addDecimal () {
+    if (shouldDisplayClear) {
+        resetDisplay();
+    }
+    if (currentOperation.textContent === '') {
+        currentOperation.textContent = '0';
+    }
+    if (currentOperation.textContent.includes('.')) {
+        return;
+    }
+    currentOperation.textContent += '.';
 }
