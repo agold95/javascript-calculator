@@ -1,3 +1,8 @@
+:root {
+    background-color: rgb(184, 222, 255);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -7,15 +12,28 @@
 
 .calculator {
     border: solid 3px black;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgb(67, 132, 252);
 }
 
 .display {
     border: solid 3px black;
     border-radius: 5px;
-    padding: 55px 10px;
+    padding: 30px 10px;
     margin-bottom: 10px;
+    background-color: rgb(219, 219, 219);
+}
+
+#last-display {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: rgb(95, 95, 95);
+    font-style: italic;
+}
+
+#current-display {
+    font-size: 40px;
 }
 
 button {
@@ -23,6 +41,57 @@ button {
     padding: 20px 30px;
     margin: 5px;
     font-size: 20px;
+    border: solid black 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#delete-button {
+    background-color: rgb(219, 94, 94);
+}
+
+#delete-button:hover {
+    background-color: rgb(199, 64, 64);
+}
+
+#delete-button:active {
+    background-color: rgb(206, 19, 19);
+}
+
+#clear-button {
+    background-color: rgb(234, 247, 53);
+}
+
+#clear-button:hover {
+    background-color: rgb(238, 224, 26);
+}
+
+#clear-button:active {
+    background-color: rgb(253, 241, 72);
+}
+
+.number-button, .operator-button, .decimal-button {
+    background-color: rgb(219, 219, 219);
+}
+
+.number-button:hover, .operator-button:hover, .decimal-button:hover {
+    background-color: rgb(167, 167, 167);
+}
+
+.number-button:active, .operator-button:active, .decimal-button:active {
+    background-color: rgb(218, 218, 218);
+}
+
+.equals-button {
+    background-color: rgb(36, 184, 36);
+}
+
+.equals-button:hover {
+    background-color: rgb(26, 138, 26);
+}
+
+.equals-button:active {
+    background-color: rgb(27, 187, 27);
 }
 
 .button-grid {
@@ -33,3 +102,8 @@ button {
 .first-row {
     grid-column: span 2;
   }
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+}
