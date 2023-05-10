@@ -94,6 +94,10 @@ button {
     background-color: rgb(27, 187, 27);
 }
 
+.operator-button, .decimal-button {
+    background-color: rgb(161, 70, 247);
+}
+
 .button-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
